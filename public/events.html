@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — EventLy</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<template id="page-body">
+    <div class="page-toolbar">
+        <div>
+            <h2>Events</h2>
+            <div class="sub">Schedule and manage events across your venues.</div>
+        </div>
+        <div class="toolbar-actions">
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" id="searchInput" placeholder="Search events...">
+            </div>
+            <select class="filter-select" id="statusFilter">
+                <option value="">All statuses</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+            <button class="btn btn-primary" id="addEventBtn">+ Add Event</button>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>Event</th><th>Venue</th><th>Date</th><th>Time</th><th>Price</th><th>Seats</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="eventsBody"><tr class="loading-row"><td colspan="8">Loading events...</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="eventModalTitle">Add Event</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="eventForm">
+                    <input type="hidden" id="event_id">
+                    <div class="field"><label>Event name</label><input type="text" id="event_name" required></div>
+                    <div class="form-row">
+                        <div class="field"><label>Category</label><input type="text" id="event_category" placeholder="Conference, Concert..."></div>
+                        <div class="field"><label>Venue</label><select id="event_venue" required></select></div>
+                    </div>
+                    <div class="field"><label>Description</label><textarea id="event_description" rows="2"></textarea></div>
+                    <div class="form-row">
+                        <div class="field"><label>Event date</label><input type="date" id="event_date" required></div>
+                        <div class="field"><label>Organizer</label><input type="text" id="event_organizer"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field"><label>Start time</label><input type="time" id="event_start" required></div>
+                        <div class="field"><label>End time</label><input type="time" id="event_end" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field"><label>Ticket price (₹)</label><input type="number" id="event_price" min="0" step="0.01" required></div>
+                        <div class="field"><label>Total seats</label><input type="number" id="event_seats" min="1" required></div>
+                    </div>
+                    <div class="field">
+                        <label>Status</label>
+                        <select id="event_status">
+                            <option value="upcoming">Upcoming</option>
+                            <option value="ongoing">Ongoing</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" data-modal-close>Cancel</button>
+                <button class="btn btn-primary" id="saveEventBtn">Save Event</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/events.js"></script>
+</body>
+</html>

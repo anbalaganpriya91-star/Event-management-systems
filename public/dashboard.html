@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — EventLy</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<template id="page-body">
+    <div class="page-toolbar">
+        <div>
+            <h2>Welcome back 👋</h2>
+            <div class="sub">Here's what's happening across your events today.</div>
+        </div>
+    </div>
+
+    <div class="stat-grid" id="statGrid">
+        <div class="stat-card"><div><div class="label">Total Venues</div><div class="value">—</div></div><div class="stat-icon icon-teal">🏛</div></div>
+        <div class="stat-card"><div><div class="label">Total Events</div><div class="value">—</div></div><div class="stat-icon icon-amber">🎫</div></div>
+        <div class="stat-card"><div><div class="label">Total Bookings</div><div class="value">—</div></div><div class="stat-icon icon-teal">📖</div></div>
+        <div class="stat-card"><div><div class="label">Revenue Collected</div><div class="value">—</div></div><div class="stat-icon icon-green">💰</div></div>
+    </div>
+
+    <div class="grid-2">
+        <div class="panel">
+            <div class="panel-head"><h3>Revenue Trend</h3></div>
+            <canvas id="revenueChart" height="110"></canvas>
+        </div>
+        <div class="panel">
+            <div class="panel-head"><h3>Bookings by Status</h3></div>
+            <canvas id="statusChart" height="110"></canvas>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="panel">
+            <div class="panel-head">
+                <h3>Recent Bookings</h3>
+                <a href="/bookings.html" class="btn btn-ghost btn-sm">View all</a>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead><tr><th>Code</th><th>Event</th><th>Participant</th><th>Amount</th><th>Status</th></tr></thead>
+                    <tbody id="recentBookingsBody"><tr class="loading-row"><td colspan="5">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-head"><h3>Top Venues</h3></div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead><tr><th>Venue</th><th>Bookings</th></tr></thead>
+                    <tbody id="topVenuesBody"><tr class="loading-row"><td colspan="2">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

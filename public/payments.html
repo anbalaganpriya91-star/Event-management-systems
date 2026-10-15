@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payments — EventLy</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<template id="page-body">
+    <div class="page-toolbar">
+        <div>
+            <h2>Payments</h2>
+            <div class="sub">Process, track and reconcile payments for every booking.</div>
+        </div>
+        <div class="toolbar-actions">
+            <select class="filter-select" id="statusFilter">
+                <option value="">All statuses</option>
+                <option value="pending">Pending</option>
+                <option value="paid">Paid</option>
+                <option value="failed">Failed</option>
+                <option value="refunded">Refunded</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>Transaction</th><th>Booking</th><th>Event</th><th>Participant</th><th>Amount</th><th>Method</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+                <tbody id="paymentsBody"><tr class="loading-row"><td colspan="9">Loading payments...</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="processModal">
+        <div class="modal">
+            <div class="modal-header"><h3>Process Payment</h3><button class="modal-close">&times;</button></div>
+            <div class="modal-body">
+                <input type="hidden" id="process_payment_id">
+                <p style="font-size:13.5px;color:var(--ink-600);margin-bottom:14px;">Amount due: <strong id="process_amount" style="color:var(--navy-900);"></strong></p>
+                <div class="field">
+                    <label>Payment method</label>
+                    <div class="pay-method-grid">
+                        <label><input type="radio" name="pm" value="cash" checked><span>💵 Cash</span></label>
+                        <label><input type="radio" name="pm" value="card"><span>💳 Card</span></label>
+                        <label><input type="radio" name="pm" value="upi"><span>📱 UPI</span></label>
+                        <label><input type="radio" name="pm" value="bank_transfer"><span>🏦 Bank</span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" data-modal-close>Cancel</button>
+                <button class="btn btn-primary" id="confirmProcessBtn">Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/payments.js"></script>
+</body>
+</html>

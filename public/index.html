@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EventLy</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $.ajax({ url: '/api/auth/me', method: 'GET', xhrFields: { withCredentials: true } })
+        .done(function () { window.location.href = '/dashboard.html'; })
+        .fail(function () { window.location.href = '/login.html'; });
+</script>
+</body>
+</html>
